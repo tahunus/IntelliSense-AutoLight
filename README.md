@@ -1,6 +1,11 @@
 # AutoSense.IntelliLight
 An experiment in user interfaces for automated control of lights
-## Contents
+## Components
+1. [**Sensors**](#sensors)
+2. [**MCU**](#mcu)
+3. [**Other Parts**](#other-parts)
+4. [**3D Printed Case**](#3d-printed-case)
+## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
 	* [Detect Motion](#detect-motion)
 	* [Detect faces](#detect-faces)
@@ -10,15 +15,14 @@ An experiment in user interfaces for automated control of lights
 3. [**Auto Temperature via Circadian Rhythm**](#auto-temperature-via-circadian-rhythm)
    	* [Time of Day](#time-of-day)
    	* [Temperature Table](#temperature-table)
-4. [**Adjustments via Hand Gestures**](#adjustments-via-hand-gestures)
+4. [**Light Adjustments via Hand Gestures**](#light-adjustments-via-hand-gestures)
    	* [Gesture Recognition](#gesture-recognition)
 5. [**System Configuration**](#system-configuration)
    	* [Enroll Lights](#enroll-lights)
    	* [Enroll Faces](#enroll-faces)
    	* [Circadian Rhythm Temperatures](#circadian-rhythm-temperatures)
-   	* [Scenes Table](#scenes-table)
+   	* [Faces-Scenes Table](#faces-scenes-table)
    	* [Sensitivity Parameters](#sensitivity-parameters)
-
 
 text to separate content
 
@@ -36,12 +40,19 @@ ________________________________________________________________________________
 ## Auto Temperature via Circadian Rhythm
 ### Time of Day
 ### Temperature Table
-## Adjustments via Hand Gestures
+## Light Adjustments via Hand Gestures
 ### Gesture Recognition
 ## System Configuration
 ### Enroll Lights
 ### Enroll Faces
 ### Circadian Rhythm Temperatures
-### Scenes Table
+### Faces-Scenes Table
 ### Sensitivity Parameters
+
+_____________________________________________________________________________________________________
+
+### Sensors
+### MCU
+### Other Parts
+### 3D Printed Case
 
