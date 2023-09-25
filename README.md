@@ -10,7 +10,7 @@ Write here a summary, objectives, etc
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
 	* [Detect Motion](#detect-motion)
-	* [Detect faces](#detect-faces)
+	* [Detect Faces](#detect-faces)
 	* [Hysteresis](#hysteresis)
 3. [**Auto Scene via Face Recognition**](#auto-scene-via-face-recognition)
 	* [Face Recognition](#face-recognition)
@@ -55,6 +55,7 @@ The selected PIR sensor is based on the SR602 and has a non-programable block ti
 The Person Sensor data is accessed via I2C. The struct returned by the sensor includes the confidence that the image taken contains at least one human face and if so, how many faces are there. If the confidence that the object closest to the camera is a human face is greater than 70%, this is considered as a HIGH state. 
 #### Hysteresis
 A running total of a predefined number of samples of the time that the sensor stayed on HIGH or LOW through consecutive readings is kept for each sensor. This running total is updated every time the state of the sensor changes. 
+
 Comparing the current state of the lamp(s) and the state of teh sensor, the system checks if the thresholds defined in the sensor's constructor are met to conclude on an action on the lamp. If both sensors concur on the action, then such an action is executed. 
 ## Auto Scene via Face Recognition
 #### Face Recognition
