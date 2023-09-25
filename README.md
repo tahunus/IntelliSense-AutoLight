@@ -34,45 +34,46 @@ ________________________________________________________________________________
 
 
 ## Auto On/Off via Presence Detection
-To determine if the lights should be acted upon (ON/OFF), the accessory uses the PIR sensor to detect motion and the [Person Sensor](https://www.sparkfun.com/products/21231) to detect the presence of human faces. This means that simple motion, like someone passing by, will not trigger ON and that a human sitting perfectly still (like when reading), will not trigger OFF. Because the Person Sensor uses a camera, it is subject to variability based on ambient light and back light. By combining this sensor with the PIR sensor, false positives and negatives are greatly reduced. 
+To determine if the lights should be acted upon (ON/OFF), the accessory uses the PIR sensor to detect motion and the [Person Sensor](https://www.sparkfun.com/products/21231) to detect the presence of human faces. This means that simple motion, like someone passing by, will not trigger ON and that a human sitting perfectly still (like when reading), will not trigger OFF. Because the Person Sensor uses a camera, it is subject to variability based on ambient light and back light. By combining these two sensors, false positives and negatives are greatly reduced. 
 
-The class _SensorReader_, defined in _presenceDetection.h_, is used to manage the samples from both sensors. It's constructor parameters are:
+The class _SensorReader_, defined in _presenceDetection.h_, is used to manage the samples from both sensors. Understanding it's constructor parameters will give a good idea on how this hystereis / sensor fusion process takes place.
 
 | Variable | Description |
 | -------- | ----------- |
-| sensorType | 0 for PIR and 1 for Person Sensor |
-| timeBetweenSamples | rate to read sensor in ms |
-| pirPin | GPIO PIN for the input data from the PIR sensor |
-| offThreshold | % of time spent on LOW below which lamp should be set to OFF |
-| offCountLimit	| Ramp up |
-| lampOnTime | M |
-| lampOffTime |	Time limit to set lamp to OFF independent of hysteresis |
-| bufferSize | Number of samples to keep in the running totals for averages |
-| DEBUG_MODE | TRUE for detailed debug output to serial port (NOTE: DEBUG must de defined in RC3.ino) |
-### Detect Motion
-
-
-
-### Detect Faces
-### Hysteresis
+| _sensorType_ | 0 for PIR, 1 for Person Sensor, ready for additional sensors |
+| _timeBetweenSamples_ | rate to read sensor in ms |
+| _pirPin_ | GPIO PIN for the input data from the PIR sensor |
+| _offThreshold_ | % of time spent on LOW in rolling sum above which lamp is turned OFF |
+| _offCountLimit_ | # of changes to go from (offTheshold + OffMargin) to just offThreshold |
+| _lampOnTime_ | time spent on HIGH to turn lamp on (as a timeout for hysteresis) |
+| _lampOffTime_ | time spent on LOW to turn lamp off (as a timeout for hysteresis) |
+| _bufferSize_ | Number of samples to keep in the running sum of HIGH's and LOW's |
+| _DEBUG_MODE_ | TRUE for detailed debug output to serial port (NOTE: DEBUG must de defined in RC3.ino) |
+#### Detect Motion
+The selected PIR sensor is based on the SR602 and has a non-programable block time of 2.5 seconds. The GPIO pin is read according to the frequencey defined in its constructor
+#### Detect Faces
+The Person Sensor data is accessed via I2C. The struct returned by the sensor includes the confidence that the image taken contains at least one human face and if so, how many faces are there. If the confidence that the object closest to the camera is a human face is greater than 70%, this is considered as a HIGH state. 
+#### Hysteresis
+A running total of a predefined number of samples of the time that the sensor stayed on HIGH or LOW through consecutive readings is kept for each sensor. This running total is updated every time the state of the sensor changes. 
+Comparing the current state of the lamp(s) and the state of teh sensor, the system checks if the thresholds defined in the sensor's constructor are met to conclude on an action on the lamp. If both sensors concur on the action, then such an action is executed. 
 ## Auto Scene via Face Recognition
-### Face Recognition
+#### Face Recognition
 ## Auto Temperature via Circadian Rhythm
-### Time of Day
-### Temperature Table
+#### Time of Day
+#### Temperature Table
 ## Light Adjustments via Hand Gestures
-### Gesture Recognition
+#### Gesture Recognition
 ## System Configuration
-### Enroll Lights
-### Enroll Faces
-### Circadian Rhythm Temperatures
-### Faces-Scenes Table
-### Sensitivity Parameters
+#### Enroll Lights
+#### Enroll Faces
+#### Circadian Rhythm Temperatures
+#### Faces-Scenes Table
+#### Sensitivity Parameters
 
 _____________________________________________________________________________________________________
 
-### Sensors
-### MCU
-### Other Parts
-### 3D Printed Case
+#### Sensors
+#### MCU
+#### Other Parts
+#### 3D Printed Case
 
