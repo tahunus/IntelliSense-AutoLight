@@ -75,6 +75,11 @@ The user can modify these (see [Circadian Rhythm Temperatures](#circadian-rhythm
 ## Light Adjustments via Hand Gestures
 
 #### Gesture Recognition
+If a gesture is detected (_gestureSensor.getDataReady()_ returns true), the program fetches the current gesture state with _gestureSensor.getGesturesState()_. The program then converts this gesture state to a gesture index by analyzing a 16-bit number. Each bit represents a potential gesture. It returns the index of the set bit or -1 if multiple gestures are detected simultaneously or none is detected
+
+There are gestures that need confirmation and those that don’t. For gestures needing confirmation ("Up", "Down", and "Forward"), the user has to make another gesture within a set timeout (_twoStepTimeout_) to confirm their initial gesture. For instance, if the user first makes an "Up" gesture and then confirms it within the time limit, the lamp brightness will increase if it's already ON, or it will simply turn ON if it was OFF. Other gestures like "Left", "Right", "Clockwise", and "Counterclockwise" do not require confirmation and directly map to corresponding light actions like changing temperature or toggling light color.
+
+The program also uses LED indications to show the user when they've made a gesture and when they need to confirm it (_fastBlink()_ function).
 ## System Configuration
 #### Enroll Lights
 #### Enroll Faces
