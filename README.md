@@ -68,6 +68,9 @@ Light temperature based using circadian rhythm principles is set when there is n
 #### Time of Day
 A reference time is acquired in _setup()_ (i.e. initial boot and any reboot) and after any saved data from the web interface (i.e. enrolled lights, circadian rhythm temperatures and enrolled faces & scenes). This is accomplished by sending a UDP packet to the first enrolled light in the list and to a couple of NTP servers in _getReferenceHour()_ as defined in _declarations.h_. A loop waits for 5 seconds for any response from any of these two sources. The NTP server time, if received, has preference over the time from the enrolled light.  This reference UTC (in UNIX epoch format) and reference millis() are used to calculate current time at any moment using current millis().
 #### Temperature Table
+The default temperature values from 6AM thru 8PM can include five values (in Kelvin: 2700, 3400, 4000, 5200, 6500) and are defined as: (picture)
+
+The user can modify these (see [Circadian Rhythm Temperatures](#circadian-rhythm-temperatures))
 ## Light Adjustments via Hand Gestures
 #### Gesture Recognition
 ## System Configuration
