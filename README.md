@@ -60,11 +60,13 @@ Comparing the current state of the lamp(s) and the state of teh sensor, the syst
 ## Auto Scene via Face Recognition
 Face recognition is executed when there are lights enrolled, they are ON and there is no pending OFF command on them. There´s also a flag so that the scene change is executed only once after a knwon face has been found. This flag is reset with any ON/OFF action. 
 
-After this, the setLampState method of the _room_ class instance is invoked with the SET_SCENE parameter. The class is defined in _lightsControl.h_. The method then uses the SET_SCENE parameter to translate the current time using the current millis() against the latest reference millis(), selects the correspnding scene for that time of day and that face Id, and goes on to issue the UDP packet.
+After this, the setLampState method of the _room_ class instance is invoked with the SET_SCENE parameter. The class is defined in _lightsControl.h_. The method then uses the SET_SCENE parameter to translate the current time using the current millis() against the latest reference millis() (see [Time of Day](#time-of-day)), selects the correspnding scene for that time of day and that face Id, and goes on to issue the UDP packet.
 #### Face Recognition
 The actual act of face recognition is done during the Person Sensor reads in _presenceDetection.h_. After there is 70% confidence that there is at least one face in the sensor's view, the closest face to the camera is compared against the saved (i.e. enrolled) faces and the first face with a confidence of at least 95% is selected as the recognized face. 
 ## Auto Temperature via Circadian Rhythm
+Light temperature based using circadian rhythm principles is set when there is no face recognized or enrolled. This means that face recongotion has precedence over circadian rhythm. When this condition occurs, the current time of day is compared against the last time that circadian rhythm temperature was set to determine is a new temperature should be set.
 #### Time of Day
+A reference time is acquired in _setup()_ (i.e. initial boot and any reboot) and after any saved data from the web interface (i.e. enrolled lights, circadian rhythm temperatures and enrolled faces & scenes). This is accomplished by sending a UDP packet to the first enrolled light in the list and to a couple of NTP servers in _getReferenceHour()_ as defined in _declarations.h_. A loop waits for 5 seconds for any response from any of these two sources. The NTP server time, if received, has preference over the time from the enrolled light.  This reference UTC (in UNIX epoch format) and reference millis() are used to calculate current time at any moment using current millis().
 #### Temperature Table
 ## Light Adjustments via Hand Gestures
 #### Gesture Recognition
