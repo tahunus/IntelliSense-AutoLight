@@ -25,6 +25,7 @@ Write here a summary, objectives, etc
    	* [Circadian Rhythm Temperatures](#circadian-rhythm-temperatures)
    	* [Faces-Scenes Table](#faces-scenes-table)
    	* [Sensitivity Parameters](#sensitivity-parameters)
+   	* [Webserver and Webclient](#webserver--webclient)
 
 text to separate content
 
@@ -80,6 +81,16 @@ The user can modify these (see [Circadian Rhythm Temperatures](#circadian-rhythm
 #### Circadian Rhythm Temperatures
 #### Faces-Scenes Table
 #### Sensitivity Parameters
+#### Webserver & Webclient
+The webpage is designed to discover and manage smart lights within a network. Upon loading, the page fetches information on available lights, displaying details like IP address, MAC address, signal strength, and state. Users can select which lights to enroll. The page also presents a table for adjusting light temperatures at different times of the day. Additionally, there's a table for managing Face IDs, where each face can be associated with up to three lighting scenes. The user can save changes with a "Confirm" button. Inactivity for 5 minutes triggers a notification prompting the user to reload for updated data.
+1. **Listing and Selecting Lights:**
+The JavaScript sends an asynchronous request to the server, fetching a JSON of available lights. Upon reception, the script populates the HTML table with IP, MAC, signal, and state data. Each row is equipped with a checkbox. Users check desired lights, and upon form submission, JavaScript captures these selections to enroll the chosen lights.
+
+2. **Temperature Adjustment:**
+The page loads with a table showing different times and corresponding light temperatures. The table cells are input fields pre-populated with defaults. Users can modify temperatures for any specified time. The script consolidates changes upon form submission.
+
+3. **Face ID Association:**
+An HTML dropdown allows users to pick one of three available lighting scenes. They upload a face image using the file input. The JavaScript reads the uploaded image and the selected scene. Users can repeat this three times, associating each face with a unique scene. Data is saved upon "Confirm".
 
 _____________________________________________________________________________________________________
 
