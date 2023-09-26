@@ -72,6 +72,7 @@ The default temperature values from 6AM thru 8PM can include five values (in Kel
 
 The user can modify these (see [Circadian Rhythm Temperatures](#circadian-rhythm-temperatures))
 ## Light Adjustments via Hand Gestures
+
 #### Gesture Recognition
 ## System Configuration
 #### Enroll Lights
