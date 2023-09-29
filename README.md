@@ -2,11 +2,8 @@
 An experiment in user interfaces for automated control of lights
 
 Write here a summary, objectives, etc
-## Components
-1. [**Sensors**](#sensors)
-2. [**MCU**](#mcu)
-3. [**Other Parts**](#other-parts)
-4. [**3D Printed Case**](#3d-printed-case)
+## [Components](#components)
+
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
 	* [Detect Motion](#detect-motion)
@@ -92,8 +89,6 @@ The program also uses LED indications to show the user when they've made a gestu
 
 ## System Configuration
 
-#### Enroll Lights
-
 #### Enroll Faces
 The face enrollment class uses a state machine with 5 states to acquire face samples and train (i.e. calibrate) the model in the person sensor.
 
@@ -107,9 +102,9 @@ The face enrollment class uses a state machine with 5 states to acquire face sam
 
 6. **ERASE_DATA**: If the button is still pressed after the warning, this state is entered, and all enrolled faces are removed from the system. The LED then turns solid red to confirm erasure.
  
-#### Circadian Rhythm Temperatures
+#### Enrolled Lights, Circadian Rhythm Temperatures and Enrolled Faces
 
-#### Faces-Scenes Table
+The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
 
 #### Sensitivity Parameters
 
@@ -126,8 +121,6 @@ An HTML dropdown allows users to pick one of three available lighting scenes. Th
 
 _____________________________________________________________________________________________________
 
-#### Sensors
-#### MCU
-#### Other Parts
-#### 3D Printed Case
+## Components
+
 
