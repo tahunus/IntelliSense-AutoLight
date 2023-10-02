@@ -1,8 +1,7 @@
 # AutoSense.IntelliLight
-An experiment in user interfaces for automated control of lights
+Experiments in UI/UX for a lighting experience that knows what I want and when I want it. Using ESP32-Arduino, sensors & Machine Learning
 
-Write here a summary, objectives, etc
-## [Components](#components)
+For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
 
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
