@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Settings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <table id="temperatureTable">
+      <thead>
+        <tr>
+            <th>Time of Day</th>
+            <!-- Placeholders for the time values; these will be populated by the JavaScript -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td><button onclick="resetValues()">Reset Temp</button></td>
+            <!-- Placeholders for the dropdowns; these will also be populated by the JavaScript -->
+        </tr>
+      </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
+y: none">
+    <h3 class="temperatureTitle">Light Temperatures for Circadian Rhythm</h3>
+    <thead>
+      <tr>
+          <th>Time of Day</th>
+          <!-- Placeholders for the time values; these will be populated by the JavaScript -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><button id="resetBtn" style="display: none" onclick="resetValues()">Reset</button></td>
+          <!-- Placeholders for the dropdowns; these will also be populated by the JavaScript -->
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="facesTable" style="display: none"> 
+    <h3 class="facesTitle">Scene Preferences for Enrolled Faces</h3>
+    <thead>
+      <tr>
+        <th>Face ID</th>
+        <th>Face Label</th>
+        <th>Morning: 7AM-2PM</th>
+        <th>Afternoon: 2PM-9PM</th>
+        <th>Evening: 9PM-7AM</th>
+      </tr>
+    </thead>
+    <tbody id="facesTableBody">
+    </tbody>
+  </table>
+
+  <button id="confirmBtn" style="display: none">Press to save Enrolled Lights and Faces Preferences</button>
+  <p id="statusMessage" style="display: none;"></p>
+  
+  <script src="script.js"></script>
+</body>
+</html>
