@@ -1,16 +1,3 @@
-/*struct wizColor {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-};
-const int toggleColors = 5; //const will be used in code (gestureDetection)
-wizColor lightColor[toggleColors] = { //lamp colors to toggle with CW & CCW gestures
-    {255, 0, 0},      // Red
-    {0, 255, 0},      // Dark Green
-    {0,128,128},      // Greenish blue
-    {0, 0, 255},      // Dark Blue
-    {128, 0, 128}     // Purple
-};*/
 class room {
 private:
     String groupIdentifier;
