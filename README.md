@@ -1,7 +1,6 @@
-# AutoSense.IntelliLight
 Experiments in UI/UX for a lighting experience that knows what I want and when I want it. Using ESP32-Arduino, sensors & Machine Learning
 
-For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
+For a summary of WHY, WHAT & HOW, see detailed description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
 
 ## Files
 |  |  |
@@ -39,7 +38,7 @@ Data
 Other
 * [LiteLED.h (Xylopyrographer)](https://github.com/Xylopyrographer/LiteLED)
 * [esp32-hal.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/blob/02e31b4001892535602bb0c0cc9b42e14d0c4901/cores/esp32/esp32-hal.h)
-* ctime
+* [ctime (time.h)](https://cplusplus.com/reference/ctime/)
 
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
@@ -54,11 +53,8 @@ Other
 5. [**Light Adjustments via Hand Gestures**](#light-adjustments-via-hand-gestures)
    	* [Gesture Recognition](#gesture-recognition)
 6. [**System Configuration**](#system-configuration)
-   	* [Enroll Lights](#enroll-lights)
    	* [Enroll Faces](#enroll-faces)
-   	* [Circadian Rhythm Temperatures](#circadian-rhythm-temperatures)
-   	* [Faces-Scenes Table](#faces-scenes-table)
-   	* [Sensitivity Parameters](#sensitivity-parameters)
+   	* [Enrolled Lights, Circadian Rhythm Temperatures and Enrolled Faces](#enrolled-lights-circadian-rhythm-temperatures-and-enrolled-faces)
    	* [Webserver and Webclient](#webserver--webclient)
 
 _____________________________________________________________________________________________________
@@ -138,7 +134,7 @@ The face enrollment class uses a state machine with 5 states to acquire face sam
 
 The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string 
 
-structure of JSOn string
+structure of JSOn string---------------------------------------------------------------------------------------
 
 and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
 
