@@ -18,19 +18,20 @@ For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.h
 
 ## Libraries
 Sensors
-* [person_sensor.h](https://github.com/usefulsensors/person_sensor_pico_c/blob/main/person_sensor.h)
-* [DFRobot_GR10_30.h](https://github.com/DFRobot/DFRobot_GR10_30)
-* [Wire.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/Wire)
+* [person_sensor.h (useful sensors)](https://github.com/usefulsensors/person_sensor_pico_c/blob/main/person_sensor.h)
+* [DFRobot_GR10_30.h (DFRobot)](https://github.com/DFRobot/DFRobot_GR10_30)
+* [Wire.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/Wire)
 
 Communications
-* [WiFimanager.h](https://github.com/tzapu/WiFiManager)
-* [WiFi.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/WiFi)
-* [ESPmDNS.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/ESPmDNS)
-* [WebServer.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/WebServer)
-* [AsyncUDP.h](
-10. 
-11. LittleFS.h
-12. ArduinoJSON.h
+* [WiFimanager.h (tzapu)](https://github.com/tzapu/WiFiManager)
+* [WiFi.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/WiFi)
+* [ESPmDNS.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/ESPmDNS)
+* [WebServer.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/WebServer)
+* [AsyncUDP.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/AsyncUDP)
+
+Data
+* [LittleFS.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/LittleFS)
+* [ArduinoJSON.h (bblanchon)](https://github.com/bblanchon/ArduinoJson)
 13. IPAddress.h
 14. ctime
 15. vector
