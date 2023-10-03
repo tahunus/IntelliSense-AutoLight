@@ -4,8 +4,8 @@ Experiments in UI/UX for a lighting experience that knows what I want and when I
 For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
 
 ## Files
-| filename | description |
-| --- | --- |
+|  |  |
+| :--- | :--- |
 | 1. RC3.1.ino | main program with _setup()_ and _loop()_ |
 | 2. declarations.h | _#include_ per function and their associated variables, global variables & functions |
 | 3. faceRecognition.h | face enrollment state machine |
@@ -17,22 +17,27 @@ For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.h
 | 9. script.js, index.html & styles.css | Web GUI for light enrollment, circadian temperature modify & scene selection for enrolled faces |
 
 ## Libraries
-1. person_sensor.h
-2. WiFimanager.h
-3. WiFi.h
-4. ESPmDNS.h
-5. WebServer.h
-6. AsyncUDO.h
-7. LittleFS.h
-8. Wire.h
-9. DFRobot_GR10_30.h
-10. ArduinoJSON.h
-11. IPAddress.h
-12. ctime
-13. vector
-14. set
-15. LiteLED.h
-16. esp32-hal.h
+Sensors
+* [person_sensor.h](https://github.com/usefulsensors/person_sensor_pico_c/blob/main/person_sensor.h)
+* [DFRobot_GR10_30.h](https://github.com/DFRobot/DFRobot_GR10_30)
+* [Wire.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/Wire)
+
+Communications
+* [WiFimanager.h](https://github.com/tzapu/WiFiManager)
+* [WiFi.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/WiFi)
+* [ESPmDNS.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/ESPmDNS)
+* [WebServer.h](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/WebServer)
+* [AsyncUDP.h](
+10. 
+11. LittleFS.h
+12. ArduinoJSON.h
+13. IPAddress.h
+14. ctime
+15. vector
+16. set
+17. 
+18. LiteLED.h
+19. esp32-hal.h
 
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
@@ -54,9 +59,6 @@ For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.h
    	* [Sensitivity Parameters](#sensitivity-parameters)
    	* [Webserver and Webclient](#webserver--webclient)
 
-text to separate content
-
-more text 
 _____________________________________________________________________________________________________
 
 ## Auto On/Off via Presence Detection
