@@ -36,10 +36,10 @@ Data
 
 Other
 * [LiteLED.h (Xylopyrographer)](https://github.com/Xylopyrographer/LiteLED)
+* [esp32-hal.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/blob/02e31b4001892535602bb0c0cc9b42e14d0c4901/cores/esp32/esp32-hal.h)
 14. ctime
-15. vector
-16. set
-19. esp32-hal.h
+* [vector (c++ std)](https://cplusplus.com/reference/vector/vector/)
+* [set (c++ std)](https://cplusplus.com/reference/set/set/)
 
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
