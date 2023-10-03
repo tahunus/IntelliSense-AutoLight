@@ -33,13 +33,13 @@ Data
 * [LittleFS.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/LittleFS)
 * [ArduinoJSON.h (bblanchon)](https://github.com/bblanchon/ArduinoJson)
 * [IPAddress.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/blob/02e31b4001892535602bb0c0cc9b42e14d0c4901/cores/esp32/IPAddress.h)
+* [vector (c++ std)](https://cplusplus.com/reference/vector/vector/)
+* [set (c++ std)](https://cplusplus.com/reference/set/set/)
 
 Other
 * [LiteLED.h (Xylopyrographer)](https://github.com/Xylopyrographer/LiteLED)
 * [esp32-hal.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/blob/02e31b4001892535602bb0c0cc9b42e14d0c4901/cores/esp32/esp32-hal.h)
-14. ctime
-* [vector (c++ std)](https://cplusplus.com/reference/vector/vector/)
-* [set (c++ std)](https://cplusplus.com/reference/set/set/)
+* ctime
 
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
