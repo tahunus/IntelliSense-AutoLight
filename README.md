@@ -32,12 +32,13 @@ Communications
 Data
 * [LittleFS.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/tree/02e31b4001892535602bb0c0cc9b42e14d0c4901/libraries/LittleFS)
 * [ArduinoJSON.h (bblanchon)](https://github.com/bblanchon/ArduinoJson)
-13. IPAddress.h
+* [IPAddress.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/blob/02e31b4001892535602bb0c0cc9b42e14d0c4901/cores/esp32/IPAddress.h)
+
+Other
+* [LiteLED.h (Xylopyrographer)](https://github.com/Xylopyrographer/LiteLED)
 14. ctime
 15. vector
 16. set
-17. 
-18. LiteLED.h
 19. esp32-hal.h
 
 ## Functions
