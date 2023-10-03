@@ -3,6 +3,34 @@ Experiments in UI/UX for a lighting experience that knows what I want and when I
 
 For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
 
+## Files
+1. RC3.1.ino
+2. declarations.h
+3. faceRecognition.h
+4. presenceDetection.h
+5. lightsControl.h
+6. gestureDetection.h
+7. webServerBE.h
+8. webserverFE.h
+
+## Libraries
+1. person_sensor.h
+2. WiFimanager.h
+3. WiFi.h
+4. ESPmDNS.h
+5. WebServer.h
+6. AsyncUDO.h
+7. LittleFS.h
+8. Wire.h
+9. DFRobot_GR10_30.h
+10. ArduinoJSON.h
+11. IPAddress.h
+12. ctime
+13. vector
+14. set
+15. LiteLED.h
+16. esp32-hal.h
+
 ## Functions
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
 	* [Detect Motion](#detect-motion)
@@ -26,9 +54,7 @@ For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.h
 text to separate content
 
 more text 
-
 _____________________________________________________________________________________________________
-
 
 ## Auto On/Off via Presence Detection
 To determine if the lights should be acted upon (ON/OFF), the accessory uses the PIR sensor to detect motion and the [Person Sensor](https://www.sparkfun.com/products/21231) to detect the presence of human faces. This means that simple motion, like someone passing by, will not trigger ON and that a human sitting perfectly still (like when reading), will not trigger OFF. Because the Person Sensor uses a camera, it is subject to variability based on ambient light and back light. By combining these two sensors, false positives and negatives are greatly reduced. 
@@ -59,7 +85,7 @@ A running total of a predefined number of samples of the time that the sensor st
 Comparing the current state of the lamp(s) and the state of teh sensor, the system checks if the thresholds defined in the sensor's constructor are met to conclude on an action on the lamp. If both sensors concur on the action, then such an action is executed. 
 
 ## Auto Scene via Face Recognition
-Face recognition is executed when there are lights enrolled, they are ON and there is no pending OFF command on them. There´s also a flag so that the scene change is executed only once after a knwon face has been found. This flag is reset with any ON/OFF action. 
+Face recognition is executed when there are lights enrolled, they are ON and there is no pending OFF command on them. There´s also a flag so that the scene change is executed only once after a known face has been found. This flag is reset with any ON/OFF action. 
 
 After this, the setLampState method of the _room_ class instance is invoked with the SET_SCENE parameter. The class is defined in _lightsControl.h_. The method then uses the SET_SCENE parameter to translate the current time using the current millis() against the latest reference millis() (see [Time of Day](#time-of-day)), selects the correspnding scene for that time of day and that face Id, and goes on to issue the UDP packet.
 
@@ -67,7 +93,7 @@ After this, the setLampState method of the _room_ class instance is invoked with
 The actual act of face recognition is done during the Person Sensor reads in _presenceDetection.h_. After there is 70% confidence that there is at least one face in the sensor's view, the closest face to the camera is compared against the saved (i.e. enrolled) faces and the first face with a confidence of at least 95% is selected as the recognized face. 
 
 ## Auto Temperature via Circadian Rhythm
-Light temperature based using circadian rhythm principles is set when there is no face recognized or enrolled. This means that face recongotion has precedence over circadian rhythm. When this condition occurs, the current time of day is compared against the last time that circadian rhythm temperature was set to determine is a new temperature should be set.
+Light temperature based using circadian rhythm principles is set when there is no face recognized or enrolled. This means that face recognition has precedence over circadian rhythm. When this condition occurs, the current time of day is compared against the last time that circadian rhythm temperature was set to determine is a new temperature should be set.
 
 #### Time of Day
 A reference time is acquired in _setup()_ (i.e. initial boot and any reboot) and after any saved data from the web interface (i.e. enrolled lights, circadian rhythm temperatures and enrolled faces & scenes). This is accomplished by sending a UDP packet to the first enrolled light in the list and to a couple of NTP servers in _getReferenceHour()_ as defined in _declarations.h_. A loop waits for 5 seconds for any response from any of these two sources. The NTP server time, if received, has preference over the time from the enrolled light.  This reference UTC (in UNIX epoch format) and reference millis() are used to calculate current time at any moment using current millis().
@@ -75,7 +101,7 @@ A reference time is acquired in _setup()_ (i.e. initial boot and any reboot) and
 #### Temperature Table
 The default temperature values from 6AM thru 8PM can include five values (in Kelvin: 2700, 3400, 4000, 5200, 6500) and are defined as: (picture)
 
-The user can modify these (see [Circadian Rhythm Temperatures](#circadian-rhythm-temperatures))
+The user can modify these (see [Webserver & Webclient](#webserver--webclient))
 
 ## Light Adjustments via Hand Gestures
 
@@ -103,9 +129,11 @@ The face enrollment class uses a state machine with 5 states to acquire face sam
  
 #### Enrolled Lights, Circadian Rhythm Temperatures and Enrolled Faces
 
-The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
+The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string 
 
-#### Sensitivity Parameters
+structure of JSOn string
+
+and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
 
 #### Webserver & Webclient
 The webpage is designed to discover and manage smart lights within a network. Upon loading, the page fetches information on available lights, displaying details like IP address, MAC address, signal strength, and state. Users can select which lights to enroll. The page also presents a table for adjusting light temperatures at different times of the day. Additionally, there's a table for managing Face IDs, where each face can be associated with up to three lighting scenes. The user can save changes with a "Confirm" button. Inactivity for 5 minutes triggers a notification prompting the user to reload for updated data.
@@ -117,9 +145,3 @@ The page loads with a table showing different times and corresponding light temp
 
 3. **Face ID Association:**
 An HTML dropdown allows users to pick one of three available lighting scenes. They upload a face image using the file input. The JavaScript reads the uploaded image and the selected scene. Users can repeat this three times, associating each face with a unique scene. Data is saved upon "Confirm".
-
-_____________________________________________________________________________________________________
-
-## Components
-
-
