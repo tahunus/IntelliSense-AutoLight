@@ -4,11 +4,13 @@ Experiments in UI/UX for a lighting experience that knows what I want and when I
 For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
 
 ## Files
-1. RC3.1.ino
-2. declarations.h
-3. faceRecognition.h
-4. presenceDetection.h
-5. lightsControl.h
+| filename | description |
+| --- | --- |
+| 1. RC3.1.ino | main program with _setup()_ and _loop()_ |
+| 2. declarations.h | _#include_ per function and their associated variables, global variables & functions |
+| 3. faceRecognition.h | face enrollment state machine |
+| 4. presenceDetection.h | PIR & Person Sensor read and hystresis to determine lamp action |
+| 5. lightsControl.h | 
 6. gestureDetection.h
 7. webServerBE.h
 8. webserverFE.h
