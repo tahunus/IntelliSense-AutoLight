@@ -10,10 +10,11 @@ For a summary of WHY, WHAT & HOW, see description on [Hackster.io](https://www.h
 | 2. declarations.h | _#include_ per function and their associated variables, global variables & functions |
 | 3. faceRecognition.h | face enrollment state machine |
 | 4. presenceDetection.h | PIR & Person Sensor read and hystresis to determine lamp action |
-| 5. lightsControl.h | 
-6. gestureDetection.h
-7. webServerBE.h
-8. webserverFE.h
+| 5. lightsControl.h | _room_ class (for future dev of several room control) and _setLampState(lampActions lampAction)_ |
+| 6. gestureDetection.h | gesture validation  using _set<int> nonConfirmGestures = {2,3,6,7};_ and _set<int> confirmGestures = {0,1,4};_ |
+| 7. webServerBE.h | Web server back end to process _void discoverDevices()_ and _void saveData(const String& jsonString)_ |
+| 8. webserverFE.h | Web server front end with handle callbacks |
+| 9. script.js, index.html & styles.css | Web GUI for light enrollment, circadian temperature modify & scene selection for enrolled faces |
 
 ## Libraries
 1. person_sensor.h
