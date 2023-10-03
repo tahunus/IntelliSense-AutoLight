@@ -135,6 +135,7 @@ The face enrollment class uses a state machine with 5 states to acquire face sam
 The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string 
 
 structure of JSOn string---------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 
 and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
 
