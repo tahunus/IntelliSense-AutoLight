@@ -19,67 +19,44 @@ function updateBackgroundColor(dropdown) {
   dropdown.parentElement.style.backgroundColor = selectedColor;
   // Update the dropdown background color
   dropdown.style.backgroundColor = selectedColor; 
- 
   let thElement = document.querySelector(`#temperatureTable th:nth-child(${Array.from(dropdown.parentElement.parentElement.children).indexOf(dropdown.parentElement) + 1})`);
-  
   // Update the background color of the th element
   if (thElement) {
     thElement.style.backgroundColor = selectedColor;
   }
 }
 
-window.onload = function() {
-  // Populate Time of Day headers
-  const headerRow = document.querySelector("#temperatureTable thead tr");
-  for (let i = 6; i <= 20; i++) {
-    const th = document.createElement("th");
-    th.innerText = i;
-    headerRow.appendChild(th);
-}
-
-  // Populate Temperature dropdowns
-  const tempRow = document.querySelector("#temperatureTable tbody tr");
-  for (let i = 0; i < 15; i++) {
-    const td = document.createElement("td");
-    const select = document.createElement("select");
-    select.className = "temperature-dropdown";
-    td.appendChild(select);
-    tempRow.appendChild(td);
+window.addEventListener('load', function() {
+  var inactivityTimer;
+  function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(showReloadMessage, 5 * 60 * 1000); // 5 minutes in milliseconds
+  }
+  function showReloadMessage() {
+    alert('You have been inactive for 5 minutes.\nPlease reload the page to ensure updated data.');
   }
 
-  // Find all elements on the page that have the class temperature-dropdown
-  // and store them in a constant named dropdowns
-    const dropdowns = document.querySelectorAll(".temperature-dropdown");
-
-    // populate each dropdown
-    dropdowns.forEach((dropdown, i) => {
-      temperatures.forEach((temp) => {
-          const option = document.createElement("option");
-          option.value = temperatures.indexOf(temp);
-          option.innerText = temp;
-          dropdown.appendChild(option);
-      });
+  // facesTable (parent) to control visibility and facesTableBody (child) for data
+  var lightsTableBody = document.getElementById('lightsTableBody');
+  var facesTableBody = document.getElementById('facesTableBody');
+  var startupMessage = document.getElementById('startupMessage');
+  var statusMessage = document.getElementById('statusMessage');
+  //must contain the same elements that in C++ file
+  var options = ["XX", "Romance", "Sunset", "XX", "XX", "Cozy", "Forest", "XX", "XX", "XX", "Warm_white", 
+                 "Daylight", "Cool_white", "Night_light", "Focus", "Relax", "XX", "TV_Time", "XX", "XX", "XX", 
+                 "XX", "XX", "XX", "XX", "XX", "XX", "XX", "Candlelight", "Golden_white"];
+  startupMessage.innerHTML = '<span class="spinner"></span>Please wait, discovering lights in the network ...';
+  startupMessage.style.display = 'block';
+  var temperatureTitle = document.querySelector('.temperatureTitle');
+  temperatureTitle.style.display = 'none';
   
-      dropdown.value = selectedTemps[i];
-      updateBackgroundColor(dropdown);
-      
-      dropdown.addEventListener("change", function() {
-          selectedTemps[i] = parseInt(this.value);
-          updateBackgroundColor(dropdown);
-      });
-  });
-  
-};
-
-function resetValues() {
-    selectedTemps = [...defaultTemps];
-    const dropdowns = document.querySelectorAll(".temperature-dropdown");
-    dropdowns.forEach((dropdown, i) => {
-        dropdown.value = selectedTemps[i];
-        updateBackgroundColor(dropdown);
-    });
-}
-ponse.devices; // = array with devices data
+  // first table = discovered lights
+  var xhrDiscover = new XMLHttpRequest();
+  xhrDiscover.open('GET', '/discoverLights', true); 
+  xhrDiscover.onreadystatechange = function() {
+    if (xhrDiscover.readyState === 4 && xhrDiscover.status === 200) {
+      var response = JSON.parse(xhrDiscover.responseText);
+      var tableData = response.devices; // = array with devices data
       lightsTableBody.innerHTML = '';
       for (var i = 0; i < tableData.length; i++) {
         var row = document.createElement('tr');
