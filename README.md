@@ -40,7 +40,7 @@ Other
 * [esp32-hal.h (arduino-esp32)](https://github.com/espressif/arduino-esp32/blob/02e31b4001892535602bb0c0cc9b42e14d0c4901/cores/esp32/esp32-hal.h)
 * [ctime (time.h)](https://cplusplus.com/reference/ctime/)
 
-## Functions
+## Procedures
 1. [**Auto On/Off via Presence Detection**](#auto-onoff-via-presence-detection)
 	* [Detect Motion](#detect-motion)
 	* [Detect Faces](#detect-faces)
