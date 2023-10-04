@@ -1,18 +1,18 @@
-Experiments in UI/UX for a lighting experience that knows what I want and when I want it. Using ESP32-Arduino, sensors & Machine Learning
+Experiments in UI/UX for a lighting experience that knows what I want and when I want it. Using ESP32-Arduino, sensors & Machine Learning.
 
-For a summary of WHY, WHAT & HOW, see detailed description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
+For a summary of WHY, WHAT & HOW of the project, see detailed description on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404)
 
 ## Files
 |  |  |
 | :--- | :--- |
-| 1. RC3.1.ino | main program with _setup()_ and _loop()_ |
-| 2. declarations.h | _#include_ per function and their associated variables, global variables & functions |
+| 1. RC3.1.ino | main program with debug definition, _setup()_ (incl. WiFi provisioning) and a self-descriptive _loop()_ in 36 lines of code |
+| 2. declarations.h | _#include_'s per process and their associated variables, global variables & functions |
 | 3. faceRecognition.h | face enrollment state machine |
-| 4. presenceDetection.h | PIR & Person Sensor read and hystresis to determine lamp action |
-| 5. lightsControl.h | _room_ class (for future dev of several room control) and _setLampState(lampActions lampAction)_ |
-| 6. gestureDetection.h | gesture validation  using _set<int> nonConfirmGestures = {2,3,6,7};_ and _set<int> confirmGestures = {0,1,4};_ |
-| 7. webServerBE.h | Web server back end to process _void discoverDevices()_ and _void saveData(const String& jsonString)_ |
-| 8. webserverFE.h | Web server front end with handle callbacks |
+| 4. presenceDetection.h | PIR & Person Sensor to determine presence via and hysteresis and determine lamp action |
+| 5. lightsControl.h | _room_ class (for future dev of several rooms control) and _setLampState(lampActions lampAction)_ |
+| 6. gestureDetection.h | gesture validation using _set<int> nonConfirmGestures = {2,3,6,7};_ and _set<int> confirmGestures = {0,1,4};_ |
+| 7. webServerBE.h | Web server back-end to process _void discoverDevices()_ and _void saveData(const String& jsonString)_ |
+| 8. webserverFE.h | Web server front-end with all handle callbacks |
 | 9. script.js, index.html & styles.css | Web GUI for light enrollment, circadian temperature modify & scene selection for enrolled faces |
 
 ## Libraries
