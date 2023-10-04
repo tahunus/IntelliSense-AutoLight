@@ -132,12 +132,48 @@ The face enrollment class uses a state machine with 5 states to acquire face sam
  
 #### Enrolled Lights, Circadian Rhythm Temperatures and Enrolled Faces
 
-The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string 
+The _saveData_ function stores configuration data received from the webpage interface. It parses the incomning JSON string and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
 
-structure of JSOn string---------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
+The incoming JSON string includes data for the 3 tables (Enrolled Lights, Scenes for Enrolled Faces, Temperatures for Circadisn Rhythm). Below is a sample parsing code to exemplify the structure. JSON document size and sample codes can be calculated using the [ArduinoJSON Assistant](https://arduinojson.org/v6/assistant/#/step1)  Data in comments are examples for each category (See web GUI on [Hackster.io](https://www.hackster.io/pedro-martin/screenless-seamless-sensing-user-interface-921404) for more details).
 
-and updates the corresponding variables & arrays. As a form of visual feedback, each selected light is toggled ON/OFF. It then saves this data in 3 files: _enrolledLights.txt_, _TODtemps.txt_ and _enrolledFAces.txt_. It then updates the reference hour described in [Time of Day](#time-of-day). Finally, it sets the lights' temperature based on the incoming data.
+```C++
+StaticJsonDocument<1536> doc;
+
+// Enrolled Lights table
+for (JsonObject lightsData_item : doc["lightsData"].as<JsonArray>()) {
+  const char* lightsData_item_IP_Address = lightsData_item["IP Address"]; 	// "192.168.1.119", ...
+  bool lightsData_item_state = lightsData_item["state"]; 			// false, false, true, true, false
+  bool lightsData_item_Selected = lightsData_item["Selected"];			// false, false, true, true, false
+}
+
+// Enrolled faces table
+for (JsonObject faceData_item : doc["faceData"].as<JsonArray>()) {
+  const char* faceData_item_ID = faceData_item["ID"]; 				// "1", "2", "3"
+  const char* faceData_item_Label = faceData_item["Label"]; 			// "John Doe", "<available>", "<available>"
+  JsonArray faceData_item_Scenes = faceData_item["Scenes"];
+  int faceData_item_Scenes_0 = faceData_item_Scenes[0]; 			// 11, 8, 14
+  int faceData_item_Scenes_1 = faceData_item_Scenes[1]; 			// 12, 12, 12
+  int faceData_item_Scenes_2 = faceData_item_Scenes[2]; 			// 6, 7, 14
+}
+
+// Temperatures for Cirdadian Rhythm table
+JsonArray temperatureData = doc["temperatureData"];
+int temperatureData_0 = temperatureData[0]; 					// 0
+int temperatureData_1 = temperatureData[1]; 					// 1
+int temperatureData_2 = temperatureData[2]; 					// 1
+int temperatureData_3 = temperatureData[3]; 					// 2
+int temperatureData_4 = temperatureData[4]; 					// 2
+int temperatureData_5 = temperatureData[5]; 					// 4
+int temperatureData_6 = temperatureData[6]; 					// 4
+int temperatureData_7 = temperatureData[7]; 					// 4
+int temperatureData_8 = temperatureData[8];					// 3
+int temperatureData_9 = temperatureData[9]; 					// 3
+int temperatureData_10 = temperatureData[10]; 					// 2
+int temperatureData_11 = temperatureData[11]; 					// 2
+int temperatureData_12 = temperatureData[12];					// 1
+int temperatureData_13 = temperatureData[13]; 					// 1
+int temperatureData_14 = temperatureData[14]; 					// 0
+```
 
 #### Webserver & Webclient
 The webpage is designed to discover and manage smart lights within a network. Upon loading, the page fetches information on available lights, displaying details like IP address, MAC address, signal strength, and state. Users can select which lights to enroll. The page also presents a table for adjusting light temperatures at different times of the day. Additionally, there's a table for managing Face IDs, where each face can be associated with up to three lighting scenes. The user can save changes with a "Confirm" button. Inactivity for 5 minutes triggers a notification prompting the user to reload for updated data.
