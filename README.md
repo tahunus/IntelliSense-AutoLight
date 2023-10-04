@@ -5,12 +5,12 @@ For a summary of WHY, WHAT & HOW of the project, see detailed description on [Ha
 ## Files
 |  |  |
 | :--- | :--- |
-| 1. RC3.1.ino | main program with debug definition, _setup()_ (incl. WiFi provisioning) and a self-descriptive _loop()_ in 36 lines of code |
+| 1. RC3.1.ino | main program with DEBUG definition, _setup()_ (incl. WiFi provisioning) and a self-descriptive _loop()_ in 36 lines of code 😁 |
 | 2. declarations.h | _#include_'s per process and their associated variables, global variables & functions |
 | 3. faceRecognition.h | face enrollment state machine |
-| 4. presenceDetection.h | PIR & Person Sensor to determine presence via and hysteresis and determine lamp action |
+| 4. presenceDetection.h | PIR & Person Sensor to determine presence and hysteresis to determine lamp action |
 | 5. lightsControl.h | _room_ class (for future dev of several rooms control) and _setLampState(lampActions lampAction)_ |
-| 6. gestureDetection.h | gesture validation using _set<int> nonConfirmGestures = {2,3,6,7};_ and _set<int> confirmGestures = {0,1,4};_ |
+| 6. gestureDetection.h | gesture validation including using non confirmation (_set<int> nonConfirmGestures = {2,3,6,7};_) and confirmation requiring gestures (_set<int> confirmGestures = {0,1,4};_) |
 | 7. webServerBE.h | Web server back-end to process _void discoverDevices()_ and _void saveData(const String& jsonString)_ |
 | 8. webserverFE.h | Web server front-end with all handle callbacks |
 | 9. script.js, index.html & styles.css | Web GUI for light enrollment, circadian temperature modify & scene selection for enrolled faces |
