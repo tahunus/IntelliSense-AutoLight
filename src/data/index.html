@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature Settings</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiZ Smart Switch</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <table id="temperatureTable">
-      <thead>
-        <tr>
-            <th>Time of Day</th>
-            <!-- Placeholders for the time values; these will be populated by the JavaScript -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-            <td><button onclick="resetValues()">Reset Temp</button></td>
-            <!-- Placeholders for the dropdowns; these will also be populated by the JavaScript -->
-        </tr>
-      </tbody>
-    </table>
-    <script src="script.js"></script>
-</body>
-</html>
-y: none">
+  <!-- <h2>WiZ Smart Switch Configuration</h2> -->
+  <p id="startupMessage" style="display: none;"></p>
+
+  <table id="lightsTable" style="display: none"> 
+    <h3 class="lightsTitle">WiZ Lights found in the Network</h3>
+    <thead>
+      <tr>
+        <th>IP address</th>
+        <th>MAC address</th>
+        <th>Signal (RSSI) </th>
+        <th>On / Off</th>
+        <th>Enrolled</th>
+      </tr>
+    </thead>
+    <tbody id="lightsTableBody">
+    </tbody>
+  </table>
+
+  <table id="temperatureTable" style="display: none">
     <h3 class="temperatureTitle">Light Temperatures for Circadian Rhythm</h3>
     <thead>
       <tr>
